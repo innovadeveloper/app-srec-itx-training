@@ -1,0 +1,131 @@
+spring:
+  application:
+    name: app-srec-itx-training
+  profiles:
+    active: local
+company-response-mapping:
+  rest:
+    - companyId: "default"
+      description: "todas las empresas genéricas"
+      id:
+        - default
+      codes:
+        resultCode:
+          type: int
+          keyProperty: resultCode
+          defaultValue : 0
+          description: "código de respuesta de la conexión"
+          equivalence:
+        resultDescription:
+          type: String
+          keyProperty: resultDescription
+          defaultValue : "CP0133"
+          description: "descripción de respuesta de la conexión"
+          equivalence:
+    - companyId: "CLARO"
+      description: "Claro company"
+      id:
+        - CLARO
+        - CLAROAM
+        - CLAROSM
+      codes:
+        resultCode:
+          type: int
+          defaultValue : 0
+          keyProperty: expressionCode
+          description: "código de respuesta de la conexión"
+          equivalence:
+            - in: 10
+              out: 1
+            - in: 20
+              out: 2
+            - in: 30
+              out: 3
+            - in: 40
+              out: 4
+            - in: 1000
+              out: 1
+        resultDescription:
+          type: String
+          keyProperty: expressionDescription
+          defaultValue : "CP0133"
+          description: "descripción de respuesta de la conexión"
+          equivalence:
+            - in: CLAR_133
+              out: CP0133
+            - in: CLAR_143
+              out: CP0143
+            - in: CLAR_153
+              out: CP0153
+            - in: AAA_123_@@@
+              out: CP000
+    - companyId: "MOVISTAR"
+      description: "Movistar company"
+      id:
+        - MOVISTAR
+        - MOVISTARAM
+        - MOVIS-STAR
+      codes:
+        resultCode:
+          type: int
+          defaultValue : 0
+          keyProperty: expressionCodeForMovistar
+          description: "código de respuesta de la conexión"
+        resultDescription:
+          type: String
+          keyProperty: expressionDescriptionForMovistar
+          defaultValue : "CP0133"
+          description: "descripción de respuesta de la conexión"
+          equivalence:
+
+## Dynamic mocks for integration interconnection tests
+dynamic-mocks:
+  fullName: "pruebas"
+  mockconfigurations:
+    - servicetype: "genericRest"
+      description: "Mocks para Genericas Rest"
+      mocks:
+        ##>>>>Pagos<<<<<
+        - operationType: "payment"
+          description: "Caso de prueba para pago Validacion Completa con endorsement y de exito"
+          httpstatus: 200
+          customerIds:
+            - "993444751"
+            - "993444752"
+            - "993444753"
+            - "993444754"
+            - "953161030"
+          fulfillFields:
+            ##request->response
+            - "rqUUID->rqUUID"
+            - "operationDate->operationDate"
+            - "operationNumber->operationNumberCompany"
+          response: '{"rqUUID":"","resultCode":"CP0000","resultDescription":"PROCESO CONFORME","operationDate":"","operationNumberCompany":"","endorsement":"Gracias por realizar su pago :)"}'
+        - operationType: "payment"
+          description: "Caso de prueba para pago con error CP0138"
+          httpstatus: 200
+          customerIds:
+            - "953163940"
+            - "953163930"
+            - "953163910"
+            - "918163931"
+            - "918163940"
+            - "918163930"
+            - "922163940"
+            - "923163930"
+            - "924163940"
+            - "927163930"
+          fulfillFields:
+            ##request->response
+            - "rqUUID->rqUUID"
+            - "operationDate->operationDate"
+          response: '{"rqUUID":"","resultCode":"CP0138","resultDescription":"ERROR AL PROCESAR TRANSACCION","resultCodeCompany":"ERROR-21DB","resultDescriptionCompany":"FAIL TO CONNECT DB","operationDate":""}'
+
+info:
+  project:
+    name: '@project.name@'
+    description: '@project.description@'
+    version: @project.version@
+    type: 'business'
+    artifact-id: '@project.artifactId@'
+    app-group: 'atla'

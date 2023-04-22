@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: app-srec-itx-training
+  profiles:
+    active: local
+name: hola
+## Dynamic mocks for integration interconnection tests
+dynamic-mocks:
+  mockconfigurations:
+    - servicetype: "genericRest"
+      description: "Mocks para Genericas Rest"
+      mocks:
+        ##>>>>Pagos<<<<<
+        - operationType: "payment"
+          description: "Caso de prueba para pago Validacion Completa con endorsement y de exito"
+          httpstatus: 200
+          customerIds:
+            - "993444751"
+            - "993444752"
+            - "993444753"
+            - "993444754"
+            - "953161030"
+          fulfillFields:
+            ##request->response
+            - "rqUUID->rqUUID"
+            - "operationDate->operationDate"
+            - "operationNumber->operationNumberCompany"
+          response: '{"rqUUID":"","resultCode":"CP0000","resultDescription":"PROCESO CONFORME","operationDate":"","operationNumberCompany":"","endorsement":"Gracias por realizar su pago :)"}'
+        - operationType: "payment"
+          description: "Caso de prueba para pago con error CP0138"
+          httpstatus: 200
+          customerIds:
+            - "953163940"
+            - "953163930"
+            - "953163910"
+            - "918163931"
+            - "918163940"
+            - "918163930"
+            - "922163940"
+            - "923163930"
+            - "924163940"
+            - "927163930"
+          fulfillFields:
+            ##request->response
+            - "rqUUID->rqUUID"
+            - "operationDate->operationDate"
+          response: '{"rqUUID":"","resultCode":"CP0138","resultDescription":"ERROR AL PROCESAR TRANSACCION","resultCodeCompany":"ERROR-21DB","resultDescriptionCompany":"FAIL TO CONNECT DB","operationDate":""}'
+
+info:
+  project:
+    name: '@project.name@'
+    description: '@project.description@'
+    version: @project.version@
+    type: 'business'
+    artifact-id: '@project.artifactId@'
+    app-group: 'atla'

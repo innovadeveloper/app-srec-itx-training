@@ -1,0 +1,209 @@
+{
+  "expressionCode": 1000,
+  "expressionDescription" : "AAA_123_@@@",
+  "eventId": "bce9ea6b-2021-0831-1301-27660e75eb83",
+  "timestamp": 1630414971,
+  "dateTime": "2021-08-31 13:02:51",
+  "interfaceCode": "JOINNUS-230620221140",
+  "operationTypeCode": "10",
+  "validationTypeCode": "06",
+  "retryStateFlag": "",
+  "channelCode": "PZ",
+  "jmsMessageId": "414d5120514c323332303030313331208a2a256102e07725",
+  "transactionDate": "20210217120638",
+  "originAppInterconnection": "TRANSFORMER",
+  "mqId": "q1",
+  "metadata": {
+    "result": {
+      "status": "1",
+      "communication": {
+        "code": "",
+        "message": ""
+      },
+      "component": {
+        "code": "",
+        "message": "",
+        "trace": ""
+      }
+    },
+    "parameter": {
+      "interfaceId": 1,
+      "interfaceCode": "JOINNUS",
+      "interfaceSchedule": "00:00-23:59",
+      "captureTimeout": 30,
+      "retriesConnection": 0,
+      "interfaceConnectivityCode": "1",
+      "interfaceConnectionCode": "3",
+      "interfaceOutputCode": "1",
+      "messageInterfaceCode": "4",
+      "sourceMessageCode": "5",
+      "processType": "1",
+      "interfaceState": "2",
+      "migrationIdentifier": "1",
+      "platformCode": "0",
+      "constants": [{
+        "name": "FINANCIAL_ENTITY",
+        "value": "002"
+      },
+        {
+          "name": "WEFT_SIZE_REQUEST_COMPANY",
+          "value": "23294"
+        },
+        {
+          "name": "WEFT_SIZE_RESPONSE_COMPANY",
+          "value": "36"
+        },
+        {
+          "name": "BASEPATH_REQUEST",
+          "value": "https://support-srec-itx-connection-client-v1.ocpappsdesa.credito.bcp.com.pe"
+        },
+        {
+          "name": "INQUIRY_URI_PATH",
+          "value": "/application/srec/v1/dynamic-mock/v1/inquire"
+        },
+        {
+          "name": "PAYMENT_URI_PATH",
+          "value": "/application/srec/v1/dynamic-mock/v1/payment"
+        },
+        {
+          "name": "CHARGEBACK_URI_PATH",
+          "value": "/application/srec/v1/dynamic-mock/v1/annulment"
+        },
+        {
+          "name": "APP_CODE",
+          "value": "srec"
+        },
+        {
+          "name": "CALLER_NAME",
+          "value": "inquire"
+        },
+        {
+          "name": "REQUEST_ID",
+          "value": "550e8400-1234-41d4-a716-446655440022"
+        },
+        {
+          "name": "TOKEN_URI_PATH",
+          "value": "https://apigwdesa.lima.bcp.com.pe:8443/utils/jwt/encode"
+        }
+      ],
+      "transformationRules": [{
+        "id": 4,
+        "operation": {
+          "code": "10",
+          "description": "consulta",
+          "validationType": {
+            "code": "06",
+            "description": "validacion completa"
+          }
+        },
+        "executions": [{
+          "executionOrder": 1,
+          "typeService": "TOKEN",
+          "connectionType": "rest",
+          "companyConnectionParameters": [{
+            "destinyValue": {
+              "type": "property",
+              "value": "jwtPath"
+            },
+            "sourceValue": {
+              "type": "constant",
+              "value": "TOKEN_URI_PATH"
+            }
+          }],
+          "companyRequestBody": "{\"iss\":\"CA_GATEWAY\",\"exp\":1743926376,\"interceptUrlMap\":[{\"pattern\":\"/application/srec/v1/client/ast\",\"httpMethod\":\"POST\"},{\"pattern\":\"/application/srec/v1/client/sendMessageProcessTopic\",\"httpMethod\":\"POST\"},{\"pattern\":\"/application/srec/v1/dynamic-mock/v1/inquire\",\"httpMethod\":\"POST\"},{\"pattern\":\"/application/srec/v1/dynamic-mock/v1/payment\",\"httpMethod\":\"POST\"},{\"pattern\":\"/application/srec/v1/dynamic-mock/v1/annulment\",\"httpMethod\":\"POST\"}]}"
+        },
+          {
+            "executionOrder": 2,
+            "typeService": "BUSINESS-IN",
+            "connectionType": "rest",
+            "companyHeader": [{
+              "destinyValue": {
+                "type": "property",
+                "value": "app-code"
+              },
+              "sourceValue": {
+                "type": "constant",
+                "value": "APP_CODE"
+              }
+            },
+              {
+                "destinyValue": {
+                  "type": "property",
+                  "value": "caller-name"
+                },
+                "sourceValue": {
+                  "type": "constant",
+                  "value": "CALLER_NAME"
+                }
+              },
+              {
+                "destinyValue": {
+                  "type": "property",
+                  "value": "Request-ID"
+                },
+                "sourceValue": {
+                  "type": "constant",
+                  "value": "REQUEST_ID"
+                }
+              }
+            ],
+            "companyConnectionParameters": [{
+              "destinyValue": {
+                "type": "property",
+                "value": "basePath"
+              },
+              "sourceValue": {
+                "type": "constant",
+                "value": "BASEPATH_REQUEST"
+              }
+            },
+              {
+                "destinyValue": {
+                  "type": "property",
+                  "value": "uriPath"
+                },
+                "sourceValue": {
+                  "type": "constant",
+                  "value": "INQUIRY_URI_PATH"
+                }
+              }
+            ],
+            "companyRequestBody": "{\"rqUUID\":\"550e8400-e29b-41d4-a716-446655440000\",\"operationDate\":\"2018-08-09T20:15:44\",\"operationNumber\":\"01234567\",\"financialEntity\":\"002\",\"channel\":\"IB\",\"serviceId\":\"1002\",\"customerId\":\"953163111\"}"
+          }
+        ],
+        "templates": [{
+          "name": "response",
+          "structureFields": [{
+            "destinyValue": {
+              "type": "weft",
+              "positional": {
+                "start": 1,
+                "length": 36
+              }
+            },
+            "sourceValue": {
+              "type": "property",
+              "origin": "COMPANY_RESPONSE",
+              "value": "rqUUID"
+            }
+          }]
+        }]
+      }],
+      "origin": {
+        "id": 2,
+        "code": "CP000",
+        "description": "CP000 DESCRIPCION",
+        "input": {
+          "url": "http://input:8080",
+          "queueManager": "queue manager input"
+        },
+        "output": {
+          "url": "http://output:8080",
+          "queueManager": "queue manager output"
+        }
+      }
+    },
+    "data": "CP01BM1000                         000000                              00                                                                                       CP011APIBPRO APHKPROSS071089212 0                                                                                                                                                                                                                               00000520200JOINNUS        10102020210217121136IB07108921            TERM    1110230001       194263302602106                                                                        0100000000000000000000002005409701000 00000000000000000000                    0000000000000000000000000000                                                                                                                         1000 00000000000000000000                                                                                                                  000000000000000000  000000000000000000                                                                                                                                                                                                                                                                          000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                  000000000000000000 00                                                                                                                  000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                  000000000000000000 00                                                                                                                  000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                  000000000000000000 00                                                                                                                  000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                  000000000000000000 00                                                                                                                  000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                                                                                           000000000000000000 000000000000000000                                                                                                                                                                                                              ",
+    "companyResponse": ""
+  }
+}
