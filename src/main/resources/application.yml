@@ -3,6 +3,372 @@ spring:
     name: app-srec-itx-training
   profiles:
     active: local
+response-equivalence-mapping:
+  generic:
+    - companyIds:
+      description: "para todas las empresas genéricas que contienen una estructura de respuesta homogénea"
+      equivalences:
+        - type: simple
+          in:
+            internal:
+            external:
+              resultCode:
+                keyProperty: resultCode
+                description: "código de respuesta de la conexión"
+                values:
+              resultDescription:
+                keyProperty: resultDescription
+                description: "descripción de código"
+                values:
+          out:
+            resultCode:
+              value: resultCode
+            resultDescription:
+              value: resultDescription
+  parametric:
+    - companyIds: CLAROAM;CLAROPOS;CLARO
+      description: "empresa claro"
+      equivalences:
+        - type: complex
+          in:
+            internal:
+              operation:
+                description: "código de operación"
+                values: 10;20;30;40
+              serviceMode:
+                description: "Módo de servicio q se encuentra dentro de la trama posicional"
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM;CLAROPOS;CLARO
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 00
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 000
+          out:
+            resultCode:
+              value: CP0000
+            resultDescription:
+              value: Proceso Conforme
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 10
+              serviceMode:
+                description:
+                values: 0033
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 001
+          out:
+            resultCode:
+              value: CP0006
+            resultDescription:
+              value: Sin cuotas pendientes
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 10
+              serviceMode:
+                description:
+                values: 0033
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 002;007;008;200;700
+          out:
+            resultCode:
+              value: CP0010
+            resultDescription:
+              value: No existe depositante
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 10
+              serviceMode:
+                description:
+                values: 0033
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 006;050
+          out:
+            resultCode:
+              value: CP0141
+            resultDescription:
+              value: Codigo tiene restricciones por indicacion de empresa
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 30;40
+              serviceMode:
+                description:
+                values: 0033
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 005;011
+          out:
+            resultCode:
+              value: CP0140
+            resultDescription:
+              value: No procede pago por indicación de empresa
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 20
+              serviceMode:
+                description:
+                values: 0033
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 007;009;010;011
+          out:
+            resultCode:
+              value: CP0140
+            resultDescription:
+              value: No procede pago por indicación de empresa
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 1O
+              serviceMode:
+                description:
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 004;005
+          out:
+            resultCode:
+              value: CP0010
+            resultDescription:
+              value: No existe depositante
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 1O
+              serviceMode:
+                description:
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 003
+          out:
+            resultCode:
+              value: CP0010
+            resultDescription:
+              value: No existe depositante
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values: 20
+              serviceMode:
+                description:
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 002;006;003
+          out:
+            resultCode:
+              value: CP0140
+            resultDescription:
+              value: No procede pago por indicación de empresa
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values:
+              serviceMode:
+                description:
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROAM
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values:
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values:
+          out:
+            resultCode:
+              value: CP0138
+            resultDescription:
+              value: Error al procesar transaccion en empresa
+        #  CLARO POS
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values:
+              serviceMode:
+                description:
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROPOS
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 002
+          out:
+            resultCode:
+              value: CP0006
+            resultDescription:
+              value: Sin cuotas pendientes
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values:
+              serviceMode:
+                description:
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROPOS
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values: 21
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values: 007;008
+          out:
+            resultCode:
+              value: CP0010
+            resultDescription:
+              value: No existe depositante
+        - type: complex
+          in:
+            internal:
+              operation:
+                description:
+                values:
+              serviceMode:
+                description:
+                values:
+              interfaceCode:
+                description: "interface code de la operación"
+                values: CLAROPOS
+            external:
+              resultCode:
+                keyProperty: codigoRespuesta
+                description: "código de respuesta de la conexión"
+                values:
+              resultDescription:
+                keyProperty: codigoExtendidoRespuesta
+                description: "descripción de código"
+                values:
+          out:
+            resultCode:
+              value: CP0138
+            resultDescription:
+              value: Error en dato o formato incorrecto
+
 company-response-mapping:
   rest:
     - companyId: "default"

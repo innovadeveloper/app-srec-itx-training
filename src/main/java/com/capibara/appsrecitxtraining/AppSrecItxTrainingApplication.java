@@ -2,6 +2,7 @@ package com.capibara.appsrecitxtraining;
 
 import com.capibara.appsrecitxtraining.config.CompanyResponseMappingConfiguration;
 import com.capibara.appsrecitxtraining.config.MockConfiguration;
+import com.capibara.appsrecitxtraining.config.ResponseEquivalenceMappingConfiguration;
 import com.capibara.appsrecitxtraining.models.RestMappingOperation;
 import com.capibara.appsrecitxtraining.q2.second_sprint.app.App;
 
@@ -25,6 +26,9 @@ public class AppSrecItxTrainingApplication implements CommandLineRunner {
 	private CompanyResponseMappingConfiguration companyResponseMappingConfiguration;
 
 	@Autowired
+	private ResponseEquivalenceMappingConfiguration responseEquivalenceMappingConfiguration;
+
+	@Autowired
 	private App app;
 
 	private static Logger LOG = LoggerFactory
@@ -38,9 +42,8 @@ public class AppSrecItxTrainingApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		app.startParse(companyResponseMappingConfiguration.getRest());
-//		CompanyResponseMappingConfiguration companyResponseMappingConfigurationTemp = companyResponseMappingConfiguration;
-//		LOG.info("EXECUTING : command line runner");
-//
+		ResponseEquivalenceMappingConfiguration responseEquivalenceMappingConfiguration2222 = responseEquivalenceMappingConfiguration;
+		LOG.info("EXECUTING : command line runner");
 //		for (int i = 0; i < args.length; ++i) {
 //			LOG.info("args[{}]: {}", i, args[i]);
 //		}
