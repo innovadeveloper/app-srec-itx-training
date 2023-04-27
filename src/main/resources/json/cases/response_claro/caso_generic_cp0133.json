@@ -1,0 +1,13 @@
+{
+  "interfaceConnectivityCode" : 1,
+  "interfaceCode": "KASHIO",
+  "serviceMode" : "0033",
+  "operation" : "20",
+  "codigoRespuesta": "CP0133",
+  "codigoExtendidoRespuesta": "PROCESO CONFORME",
+  "result" : {
+    "resultCode" : "CP0133",
+    "resultDescription" : "PROCESO CONFORME"
+  },
+  "default": true
+}

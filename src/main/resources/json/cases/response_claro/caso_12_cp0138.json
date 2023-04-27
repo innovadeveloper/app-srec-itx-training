@@ -1,0 +1,13 @@
+{
+  "interfaceConnectivityCode" : 2,
+  "interfaceCode": "CLAROPOS",
+  "serviceMode" : "0033",
+  "operation" : "20",
+  "codigoRespuesta": "21",
+  "codigoExtendidoRespuesta": "1000",
+  "result" : {
+    "resultCode" : "CP0138",
+    "resultDescription" : "Error en dato o formato incorrecto"
+  },
+  "default": true
+}

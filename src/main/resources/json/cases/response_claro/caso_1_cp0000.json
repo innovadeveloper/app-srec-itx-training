@@ -1,0 +1,12 @@
+{
+  "interfaceConnectivityCode" : 2,
+  "interfaceCode": "CLAROAM",
+  "serviceMode" : "0033",
+  "operation" : "20",
+  "codigoRespuesta": "00",
+  "codigoExtendidoRespuesta": "000",
+  "result" : {
+    "resultCode" : "CP000",
+    "resultDescription" : "Proceso Conforme"
+  }
+}

@@ -41,8 +41,9 @@ public class AppSrecItxTrainingApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		app.startParse(companyResponseMappingConfiguration.getRest());
-		ResponseEquivalenceMappingConfiguration responseEquivalenceMappingConfiguration2222 = responseEquivalenceMappingConfiguration;
+//		app.startParse(companyResponseMappingConfiguration.getRest());
+		app.startParsev2(responseEquivalenceMappingConfiguration);
+//		ResponseEquivalenceMappingConfiguration responseEquivalenceMappingConfiguration2222 = responseEquivalenceMappingConfiguration;
 		LOG.info("EXECUTING : command line runner");
 //		for (int i = 0; i < args.length; ++i) {
 //			LOG.info("args[{}]: {}", i, args[i]);

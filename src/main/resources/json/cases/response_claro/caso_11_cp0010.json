@@ -1,0 +1,12 @@
+{
+  "interfaceConnectivityCode" : 2,
+  "interfaceCode": "CLAROPOS",
+  "serviceMode" : "0033",
+  "operation" : "20",
+  "codigoRespuesta": "21",
+  "codigoExtendidoRespuesta": "007",
+  "result" : {
+    "resultCode" : "CP0010",
+    "resultDescription" : "No existe depositante"
+  }
+}

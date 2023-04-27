@@ -1,5 +1,9 @@
 package com.capibara.appsrecitxtraining.q2.second_sprint.models;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,4 +37,8 @@ import lombok.experimental.SuperBuilder;
 public class InternalProperty {
     private String description;
     private String values;
+
+    public List<String> getValuesList(){
+        return Arrays.stream(values.split(";")).collect(Collectors.toList());
+    }
 }

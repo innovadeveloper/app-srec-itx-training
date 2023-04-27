@@ -1,0 +1,13 @@
+{
+  "interfaceConnectivityCode" : 2,
+  "interfaceCode": "CLAROAM",
+  "serviceMode" : "0033",
+  "operation" : "10",
+  "codigoRespuesta": "1000",
+  "codigoExtendidoRespuesta": "1000",
+  "result" : {
+    "resultCode" : "CP0138",
+    "resultDescription" : "Error al procesar transaccion en empresa"
+  },
+  "default" : true
+}

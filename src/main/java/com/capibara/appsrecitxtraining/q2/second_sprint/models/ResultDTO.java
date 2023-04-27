@@ -1,9 +1,8 @@
 package com.capibara.appsrecitxtraining.q2.second_sprint.models;
 
-import java.util.HashMap;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +10,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 /**
- * <b>Class</b>: SimpleEquivalence<br/>
+ * <b>Class</b>: ResultDTO<br/>
  * Copyright: &copy; 2020 Banco de Cr&eacute;dito del Per&uacute;.<br/>
  * Company: Banco de Cr&eacute;dito del Per&uacute;.<br/>
  *
@@ -33,14 +32,8 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @ToString
-public class SimpleEquivalence implements ModelEquivalence{
-    private String type;
-    private InEquivalence in;
-    private HashMap<String, OutEquivalence> out;
-
-    @Override
-    public String getType() {
-        return type;
-    }
-
+@Data
+public class ResultDTO {
+    private String resultCode;
+    private String resultDescription;
 }

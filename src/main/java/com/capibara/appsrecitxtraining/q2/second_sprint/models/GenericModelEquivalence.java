@@ -5,7 +5,9 @@ import com.capibara.appsrecitxtraining.models.RestCodesOperation;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -63,5 +65,9 @@ public class GenericModelEquivalence<T extends ModelEquivalence>  {
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(companyIds).append(description)
                 .toHashCode();
+    }
+
+    public List<String> getCompaniesList(){
+        return Arrays.stream(companyIds.split(";")).collect(Collectors.toList());
     }
 }

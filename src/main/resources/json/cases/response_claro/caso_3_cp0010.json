@@ -1,0 +1,12 @@
+{
+  "interfaceConnectivityCode" : 2,
+  "interfaceCode": "CLAROAM",
+  "serviceMode" : "0033",
+  "operation" : "10",
+  "codigoRespuesta": "21",
+  "codigoExtendidoRespuesta": "002",
+  "result" : {
+    "resultCode" : "CP0010",
+    "resultDescription" : "No existe depositante"
+  }
+}

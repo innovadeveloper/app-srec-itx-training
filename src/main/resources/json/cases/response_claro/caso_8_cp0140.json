@@ -1,0 +1,12 @@
+{
+  "interfaceConnectivityCode" : 2,
+  "interfaceCode": "CLAROAM",
+  "serviceMode" : null,
+  "operation" : "20",
+  "codigoRespuesta": "21",
+  "codigoExtendidoRespuesta": "002",
+  "result" : {
+    "resultCode" : "CP0140",
+    "resultDescription" : "No procede pago por indicación de empresa"
+  }
+}
